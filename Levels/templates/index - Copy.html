@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hostel Complaints &mdash; Website by Thapar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.theme.default.min.css') }}">
+
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='fonts/flaticon/font/flaticon.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/tiet-logo-banner.png')}}" type="image/x-icon">
+
+
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo mr-auto w-25"><a href="{{url_for('index')}}">Hostel Complaints</a></div>
+
+          <div class="mx-auto text-center">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
+                <li><a href="{{url_for('index')}}" class="nav-link">Home</a></li>
+                <li><a href="{{url_for('caretaker.Login')}}" class="nav-link">Caretaker Login</a></li>
+                <li><a href="{{url_for('admin.Login')}}" class="nav-link">Admin Login</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="ml-auto w-25">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
+                <li class="cta"><a href="#" class="nav-link"><span>Contact Us</span></a></li>
+              </ul>
+            </nav>
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
+          </div>
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="intro-section" id="home-section">
+
+    <div class="slide-1" style="background-image: url({{ url_for('static', filename='images/hostel.jpg') }});" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                  <h1  data-aos="fade-up" data-aos-delay="100">Register your complaints effortlessly</h1>
+                  <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">This is a project initiated by thapar students for their fellow students for ditilizing the complaint system</p>
+
+                </div>
+
+                  <div  class="col-lg-5 ml-4" data-aos="fade-up" data-aos-delay="500">
+                    <br><br><br>
+
+
+                    <form id="register_form" action="" method="post" class="form-box" style=" opacity: 1; transform: scale(1);">
+
+                      {{form.hidden_tag()}}
+                      <h3 class="h4 text-black mb-4">Sign Up</h3>
+                      <div class="form-group">
+                       {{form.email.label}} &emsp;&ensp;&emsp;&emsp;&emsp;&emsp; {{form.email(class_='inputs')}}
+                      </div>
+                      <div class="form-group">
+                        {{form.rollno.label}} &emsp;&emsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp; {{form.rollno(class_='inputs')}}
+                      </div>
+                      <div class="form-group">
+                        {{form.hostel.label}} &ensp;&ensp;&emsp;&emsp;&emsp;&emsp; {{form.hostel(class_='inputs-select')}}
+                      </div>
+                      <div class="form-group">
+                          {{form.roomno.label}}&emsp;&emsp;&emsp;&emsp; {{form.roomno(class_='inputs')}}
+                      </div>
+                      <div class="form-group">
+                        {{form.contact.label}}&emsp;&emsp;&emsp; {{form.contact(class_='inputs')}}
+                    </div>
+                      <div class="form-group">
+                          {{form.password.label}}&emsp;&emsp;&nbsp;&nbsp;&nbsp;&emsp; {{form.password(class_='inputs')}}
+                      </div>
+                      <div class="form-group">
+                          {{form.pass_confirm.label}}  {{form.pass_confirm(class_='inputs')}}
+                      </div>
+                      <div class="form-group row">
+                          <input type="submit" value="Register">
+                      </div>
+
+
+                      <strong class="toggle" id="already_toggle" onclick="myFunction()">Already a user? Login</strong>
+
+                    </form>
+                    <form id="login_form" action="" method="post" class="form-box " style="display: none;opacity: 0; transform: scale(0);">
+
+                      {{form.hidden_tag()}}
+                      <h3 class="h4 text-black mb-4">Login</h3>
+                      <div class="form-group">
+                        {{form.email.label}} &emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&nbsp; {{form.email(class_='inputs')}}</div>
+                      <div class="form-group">
+                        {{form.password.label}}&emsp;&emsp;&emsp;&emsp; {{form.password(class_='inputs')}}
+                      </div>
+                      <div class="form-group row">
+                        <input type="submit" value="Login">
+                      </div>
+
+                      
+                      <strong id="register_toggle" class="toggle"  onclick="myFunction()" style="display: none"> Register</strong>
+                    </form>
+
+                  </div>
+
+
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="site-section courses-title" id="courses-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title">Hostels</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-section courses-entry-wrap"  data-aos="fade-up" data-aos-delay="100">
+      <div class="container">
+        <div class="row">
+
+          <div class="owl-carousel col-12 nonloop-block-14">
+
+            <div class="course bg-white h-100 align-self-stretch">
+              <figure class="m-0">
+                <a href="course-single.html"><img src="{{ url_for('static',filename='images/hostel_K.jpg')}}" alt="Image" class="img-fluid"></a>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Hostel K</span>
+                <div class="meta"><span class="icon-clock-o"></span>Caretaker</div>
+                <h3><a href="#">Details</a></h3>
+                <p>Lorem ipsum dolor sit amet ipsa nulla adipisicing elit. </p>
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 1</div>
+              </div>
+            </div>
+
+            <div class="course bg-white h-100 align-self-stretch">
+              <figure class="m-0">
+                <a href="course-single.html"><img src="{{ url_for('static',filename='images/hostel_L.jpeg')}}" alt="Image" class="img-fluid"></a>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Hostel L</span>
+                <div class="meta"><span class="icon-clock-o"></span>Caretaker</div>
+                <h3><a href="#">Details</a></h3>
+                <p>Lorem ipsum dolor sit amet ipsa nulla adipisicing elit. </p>
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 2</div>
+              </div>
+            </div>
+
+            <div class="course bg-white h-100 align-self-stretch">
+              <figure class="m-0">
+                <a href="course-single.html"><img src="{{ url_for('static',filename='images/Hostel_J.jpg')}}" alt="Image" class="img-fluid"></a>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Hostel J</span>
+                <div class="meta"><span class="icon-clock-o"></span>Caretaker</div>
+                <h3><a href="#">Details</a></h3>
+                <p>Lorem ipsum dolor sit amet ipsa nulla adipisicing elit. </p>
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 3</div>
+              </div>
+            </div>
+
+
+
+            <div class="course bg-white h-100 align-self-stretch">
+              <figure class="m-0">
+                <a href="course-single.html"><img src="{{ url_for('static',filename='images/hostel_m1.jpg')}}" alt="Image" class="img-m"></a>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Hostel M</span>
+                <div class="meta"><span class="icon-clock-o"></span>Caretaker</div>
+                <h3><a href="#">Details</a></h3>
+                <p>Lorem ipsum dolor sit amet ipsa nulla adipisicing elit. </p>
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 4</div>
+              </div>
+            </div>
+
+            <div class="course bg-white h-100 align-self-stretch">
+              <figure class="m-0">
+                <a href="course-single.html"><img src="{{ url_for('static',filename='images/hostel_a.png')}}" alt="Image" class="img-fluid"></a>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Hostel A</span>
+                <div class="meta"><span class="icon-clock-o"></span>Caretaker</div>
+                <h3><a href="#">Details</a></h3>
+                <p>Lorem ipsum dolor sit amet ipsa nulla adipisicing elit. </p>
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 5</div>
+              </div>
+            </div>
+
+            <div class="course bg-white h-100 align-self-stretch">
+              <figure class="m-0">
+                <a href="course-single.html"><img src="{{ url_for('static',filename='images/hostel_b.png')}}" alt="Image" class="img-fluid"></a>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Hostel B</span>
+                <div class="meta"><span class="icon-clock-o"></span>Caretaker</div>
+                <h3><a href="#">Details</a></h3>
+                <p>Lorem ipsum dolor sit amet ipsa nulla adipisicing elit. </p>
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 6</div>
+              </div>
+            </div>
+
+          </div>
+
+         
+
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-7 text-center">
+            <button class="customPrevBtn btn btn-primary m-1">Prev</button>
+            <button class="customNextBtn btn btn-primary m-1">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section" id="programs-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center"  data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title">Our Programs</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque! Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam, illum sed veniam!</p>
+          </div>
+        </div>
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <img src="{{ url_for('static',filename='images/undraw_youtube_tutorial.svg')}}" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-black mb-4">We Are Excellent in Service</h2>
+            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>
+
+
+          </div>
+        </div>
+
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+            <img src="{{ url_for('static',filename='images/undraw_teaching.svg')}}" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-black mb-4">Strive for Excellent</h2>
+            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>
+
+
+          </div>
+        </div>
+
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <img src="{{ url_for('static',filename='images/undraw_teacher.svg')}}" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-black mb-4">Some point</h2>
+            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="site-section bg-image overlay">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-8 text-center testimony">
+              <h2 class="mb-4" style="color:white;" >Mentor</h2>  
+            <img src="{{ url_for('static',filename='images/parteek_sir.png')}}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+            <h3 class="mb-4">Parteek Bhatia</h3>
+            <blockquote>
+              <p>&ldquo; Parteek Bhatia is an Associate Professor in the Department of Computer Science and Engineering at Thapar Institute of Engineering & Technology, Patiala.&rdquo;</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="site-section bg-light" id="contact-section">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+
+
+            
+            <h2 class="section-title mb-3">TEMPERORY COMPLAINT</h2>
+            <p class="mb-5">Fill the details below to register a complaint</p>
+          
+            <form method="post" data-aos="fade">
+              <div class="form-group row">
+                <div class="col-md-6 mb-3 mb-lg-0">
+                  Type of complaint<br>
+                  <select name="carlist">
+                      <option value="volvo">General</option>
+                      <option value="saab">Room-Specific</option>
+                    </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="Subject">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your complaint here."></textarea>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6">
+                  
+                  <input type="submit" value="Register Complaint" style="width: 80%;">
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
+    
+  </div> 
+
+
+  
+  <script src="{{ url_for('static',filename='js/already_user.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery-ui.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/popper.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery.stellar.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery.countdown.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery.easing.1.3.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/aos.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery.fancybox.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/jquery.sticky.js')}}"></script>
+
+  
+  <script src="{{ url_for('static',filename='js/main.js')}}"></script>
+    
+  </body>
+</html>
